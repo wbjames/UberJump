@@ -8,7 +8,10 @@
 
 import SpriteKit
 
+
+
 class GameScene: SKScene, SKPhysicsContactDelegate{
+    
     
     var backgroundNode:SKNode?
     var foregroundNode:SKNode = SKNode()
@@ -16,15 +19,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var hudNode:SKNode?
     
     var tapToStartNode:SKSpriteNode?
+    // Height at which level ends
+    var _endLevelY:Int?
     
     let CollisionCategoryPlayer:UInt32   = 0x1 << 0
     let CollisionCategoryStar:UInt32     = 0x1 << 1
     let CollisionCategoryPlatform:UInt32 = 0x1 << 2
     
-    
     init(size :CGSize){
         super.init(size: size)
         self.backgroundColor = SKColor.blackColor()
+        
+        
+        
+        
+        
         
         hudNode = SKNode()
         self.addChild(hudNode)
@@ -36,7 +45,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         backgroundNode = createBackgroundNode()
         self.addChild(backgroundNode)
         
-        let star = createStarAtPosition(CGPointMake(160, 220))
+        let platform = createPlatformAtPosition(CGPointMake(160, 320), type: PlatfromType.PLATFORM_NORMAL)
+        foregroundNode.addChild(platform)
+        
+        let star = createStarAtPosition(CGPointMake(160, 220), type: StarType.STAR_SPECIAL)
         foregroundNode.addChild(star)
         self.addChild(foregroundNode)
         
@@ -48,6 +60,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         if hudNode {
             hudNode!.addChild(tapToStartNode)
         }
+        
+        
+        
+        
+        
+        let levelPlist:NSString = NSBundle.mainBundle().pathForResource("Level01", ofType: "plist")
+        let levelData:NSDictionary = NSDictionary(contentsOfFile: levelPlist)
+        
+        _endLevelY =  levelData["EndY"] as? Int
+        println("\(_endLevelY)")
+        
         
     }
     
@@ -83,28 +106,55 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         pNode.physicsBody.usesPreciseCollisionDetection = true
         pNode.physicsBody.categoryBitMask = CollisionCategoryPlayer
-        pNode.physicsBody.collisionBitMask = 0xFFFFFFFF;
+        pNode.physicsBody.collisionBitMask = 0;
         pNode.physicsBody.contactTestBitMask = CollisionCategoryStar | CollisionCategoryPlatform
         
         
         return pNode
     }
     
-    func createStarAtPosition(position:CGPoint) -> StarNode{
+    func createStarAtPosition(position:CGPoint, type:StarType) -> StarNode{
         var node = StarNode()
         node.position = position
         node.name = "NODE_STAR"
+        var sprite:SKSpriteNode?
         
-        let sprite = SKSpriteNode(imageNamed: "Star")
+        if type == StarType.STAR_SPECIAL {
+            sprite = SKSpriteNode(imageNamed: "StarSpecial")
+        } else if type == StarType.STAR_NORMAL{
+            sprite = SKSpriteNode(imageNamed: "Star")
+        }
         node.addChild(sprite)
         
-        node.physicsBody = SKPhysicsBody(circleOfRadius: sprite.size.width/2)
+        node.physicsBody = SKPhysicsBody(circleOfRadius: sprite!.size.width/2)
         
         node.physicsBody.dynamic = false
         
         node.physicsBody.categoryBitMask  = CollisionCategoryStar
-        node.physicsBody.collisionBitMask = 0xFFFFFFFF
+        node.physicsBody.collisionBitMask = 0
         
+        
+        return node
+    }
+    
+    func createPlatformAtPosition(position:CGPoint, type:PlatfromType) -> PlatformNode {
+        var node = PlatformNode()
+        node.position = position
+        node.name = "NODE_PLATFORM"
+        node.platformType = type
+        
+        var sprite:SKSpriteNode?
+        if type == PlatfromType.PLATFORM_BREAK {
+            sprite = SKSpriteNode(imageNamed: "PlatformBreak")
+        }else if type == PlatfromType.PLATFORM_NORMAL {
+            sprite = SKSpriteNode(imageNamed: "Platform")
+        }
+        node.addChild(sprite)
+        
+        node.physicsBody = SKPhysicsBody(rectangleOfSize: sprite!.size)
+        node.physicsBody.dynamic = false
+        node.physicsBody.categoryBitMask = CollisionCategoryPlatform
+        node.physicsBody.collisionBitMask = 0;
         
         return node
     }

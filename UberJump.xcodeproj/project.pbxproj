@@ -59,6 +59,9 @@
 		472ED0D4197D33F20028B227 /* Background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 472ED0A9197D33F20028B227 /* Background@2x.png */; };
 		472ED0D6197D4C550028B227 /* GameObjectNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472ED0D5197D4C550028B227 /* GameObjectNode.swift */; };
 		472ED0D8197D4DF80028B227 /* StarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472ED0D7197D4DF80028B227 /* StarNode.swift */; };
+		47A68843197FE8750085ADF4 /* Level01.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47A68842197FE8750085ADF4 /* Level01.plist */; };
+		47E000CF19800E1400F67867 /* StarPing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 47E000CE19800E1400F67867 /* StarPing.wav */; };
+		47E000D119800FBD00F67867 /* PlatformNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E000D019800FBD00F67867 /* PlatformNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +131,9 @@
 		472ED0A9197D33F20028B227 /* Background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Background@2x.png"; sourceTree = "<group>"; };
 		472ED0D5197D4C550028B227 /* GameObjectNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameObjectNode.swift; sourceTree = "<group>"; };
 		472ED0D7197D4DF80028B227 /* StarNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarNode.swift; sourceTree = "<group>"; };
+		47A68842197FE8750085ADF4 /* Level01.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level01.plist; sourceTree = "<group>"; };
+		47E000CE19800E1400F67867 /* StarPing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = StarPing.wav; sourceTree = "<group>"; };
+		47E000D019800FBD00F67867 /* PlatformNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +175,8 @@
 		472ED05A197D32510028B227 /* UberJump */ = {
 			isa = PBXGroup;
 			children = (
+				47E000CE19800E1400F67867 /* StarPing.wav */,
+				47A68842197FE8750085ADF4 /* Level01.plist */,
 				472ED07E197D33F20028B227 /* Assets.atlas */,
 				472ED07F197D33F20028B227 /* Backgrounds */,
 				472ED05D197D32510028B227 /* AppDelegate.swift */,
@@ -176,6 +184,7 @@
 				472ED061197D32510028B227 /* GameScene.swift */,
 				472ED0D5197D4C550028B227 /* GameObjectNode.swift */,
 				472ED0D7197D4DF80028B227 /* StarNode.swift */,
+				47E000D019800FBD00F67867 /* PlatformNode.swift */,
 				472ED063197D32510028B227 /* GameViewController.swift */,
 				472ED065197D32510028B227 /* Main.storyboard */,
 				472ED068197D32510028B227 /* Images.xcassets */,
@@ -338,6 +347,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47E000CF19800E1400F67867 /* StarPing.wav in Resources */,
 				472ED0B8197D33F20028B227 /* Background07.png in Resources */,
 				472ED0AC197D33F20028B227 /* Background01.png in Resources */,
 				472ED069197D32510028B227 /* Images.xcassets in Resources */,
@@ -378,6 +388,7 @@
 				472ED0C3197D33F20028B227 /* Background12@2x.png in Resources */,
 				472ED0C7197D33F20028B227 /* Background14@2x.png in Resources */,
 				472ED0CD197D33F20028B227 /* Background17@2x.png in Resources */,
+				47A68843197FE8750085ADF4 /* Level01.plist in Resources */,
 				472ED0B1197D33F20028B227 /* Background03@2x.png in Resources */,
 				472ED0AA197D33F20028B227 /* Assets.atlas in Resources */,
 				472ED0C0197D33F20028B227 /* Background11.png in Resources */,
@@ -403,6 +414,7 @@
 			files = (
 				472ED062197D32510028B227 /* GameScene.swift in Sources */,
 				472ED0D8197D4DF80028B227 /* StarNode.swift in Sources */,
+				47E000D119800FBD00F67867 /* PlatformNode.swift in Sources */,
 				472ED064197D32510028B227 /* GameViewController.swift in Sources */,
 				472ED0D6197D4C550028B227 /* GameObjectNode.swift in Sources */,
 				472ED05E197D32510028B227 /* AppDelegate.swift in Sources */,
@@ -524,6 +536,7 @@
 				INFOPLIST_FILE = UberJump/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -535,6 +548,7 @@
 				INFOPLIST_FILE = UberJump/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -591,6 +605,7 @@
 				472ED07A197D32510028B227 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		472ED07B197D32510028B227 /* Build configuration list for PBXNativeTarget "UberJumpTests" */ = {
 			isa = XCConfigurationList;
@@ -599,6 +614,7 @@
 				472ED07D197D32510028B227 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
