@@ -1,6 +1,6 @@
 import SpriteKit
 
-enum PlatfromType:Int32 {
+enum PlatfromType:Int {
     case PLATFORM_NORMAL = 0, PLATFORM_BREAK
 }
 
